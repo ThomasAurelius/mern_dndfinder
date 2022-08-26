@@ -3,6 +3,7 @@ import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { signin, signup } from '../../actions/auth';
 import Input from './Input';
 import Icon from './icon';
 import jwt_decode from "jwt-decode";
@@ -10,6 +11,7 @@ import jwt_decode from "jwt-decode";
 import useStyles from './styles';
 import { NoEncryption } from '@material-ui/icons';
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 
 const Auth = () => {
@@ -17,8 +19,9 @@ const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [formData, setFormData] = useState({})
  
 {/*Google Sign in*/}
 
@@ -28,9 +31,6 @@ const handleCallBackResponse = (response) => {
       setUser(userObj);
       dispatch({ type: 'AUTH', data: userObj });
       history.push('/');
-      
-       
-
    }
 
 const handleSignOut = () => {
@@ -55,10 +55,19 @@ const handleSignOut = () => {
 
 {/*Manual Sign in*/} 
 
-   const handleSubmit = () => {
+   const handleSubmit = (e) => {
+      e.preventDefault();
+
+      if (isSignUp) {
+         dispatch(signup(formData, history));
+      }
+      else {
+         dispatch(signin(formData, history));
+      }
    }
 
-   const handleChange = () => {
+   const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
    }
 
    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -102,7 +111,6 @@ const handleSignOut = () => {
                )}
             </Grid>
            
-            
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                {isSignUp ? 'Sign Up' : 'Sign In'}
             </Button>
@@ -113,11 +121,8 @@ const handleSignOut = () => {
                      Sign Out
                   </Button>
                </div>
-
             }
             
-           
-               
             { user ?
                <>
                   
