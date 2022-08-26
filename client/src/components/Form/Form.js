@@ -37,6 +37,13 @@ const Form = ({ currentId, setCurrentId }) => {
 
     const clear = () => {
       setCurrentId(null);
+      setPostData({
+        creator: '',
+        title: '',
+        message: '',
+        tags: '',
+        selectedFile: ''
+        })
     }
 
   return (
@@ -73,7 +80,7 @@ const Form = ({ currentId, setCurrentId }) => {
           variant="outlined" 
           fullWidth  
           value={postData.tags}
-          onChange={(e) => setPostData({...postData, tags: e.target.value})}
+          onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}
           />
           <div className={classes.fileInput}>
             <FileBase
