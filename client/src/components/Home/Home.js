@@ -5,7 +5,7 @@ import ChipInput from 'material-ui-chip-input';
 import { useDispatch } from 'react-redux';
 import  Pagination  from '../Pagination'
 
-import { getPosts, getPostBySearch } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import useStyles from './styles';
