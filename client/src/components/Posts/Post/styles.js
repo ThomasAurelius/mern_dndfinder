@@ -23,7 +23,7 @@ export default makeStyles({
   },
   overlay: {
     position: 'absolute',
-    top: '20px', 
+    top: '20px',
     left: '20px',
     color: 'white',
   },
@@ -48,5 +48,9 @@ export default makeStyles({
     padding: '0 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
   },
 });

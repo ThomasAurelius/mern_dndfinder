@@ -27,20 +27,4 @@ export default makeStyles((theme) => ({
   googleButton: {
     marginBottom: theme.spacing(2),
   },
-  hidden: {
-    display: 'none',
-  },
-  signInDiv: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signOut: {
-    display: 'flex',
-  },
-  signUpSignIn: {
-    cursor: 'pointer',
-    marginInline: 'auto',
-    marginTop: 10,
-  },
 }));
