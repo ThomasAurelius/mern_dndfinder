@@ -9,7 +9,7 @@ import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '' });
+  const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '', city: '', daysAvailable: [], spotsOpen: '' });
   const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -18,7 +18,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setPostData({ title: '', message: '', tags: [], selectedFile: '' });
+    setPostData({ title: '', message: '', tags: [], selectedFile: '', city: '', daysAvailable: [], spotsOpen: '' });
   };
 
   useEffect(() => {
@@ -48,20 +48,41 @@ const Form = ({ currentId, setCurrentId }) => {
     );
   }
 
-  const handleAddChip = (tag) => {
+  const handleAddChipTag = (tag) => {
     setPostData({ ...postData, tags: [...postData.tags, tag] });
   };
 
-  const handleDeleteChip = (chipToDelete) => {
+  const handleDeleteChipTag = (chipToDelete) => {
     setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
+  };
+
+    const handleAddChipDays = (day) => {
+    setPostData({ ...postData, daysAvailable: [...postData.daysAvailable, day] });
+  };
+
+  const handleDeleteChipDays = (chipToDelete) => {
+    setPostData({ ...postData, daysAvailable: postData.daysAvailable.filter((day) => day !== chipToDelete) });
   };
 
   return (
     <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post?.title}"` : 'Creating a Memory'}</Typography>
+        <Typography variant="h6">{currentId ? `Editing "${post?.title}" ` : 'Creating a Memory'}</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+        <TextField name="city" variant="outlined" label="City" fullWidth value={postData.city} onChange={(e) => setPostData({ ...postData, city: e.target.value })} />
         <TextField name="message" variant="outlined" label="Message" fullWidth multiline minRows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+        <TextField name="spotsOpen" variant="outlined" label="Spots open" fullWidth value={postData?.spotsOpen} onChange={(e) => setPostData({ ...postData, spotsOpen: e.target.value })} />
+        <div style={{ padding: '5px 0', width: '94%' }}>
+          <ChipInput
+            name="days"
+            variant="outlined"
+            label="Days Available"
+            fullWidth
+            value={postData.daysAvailable}
+            onAdd={(chip) => handleAddChipDays(chip)}
+            onDelete={(chip) => handleDeleteChipDays(chip)}
+          />
+        </div>
         <div style={{ padding: '5px 0', width: '94%' }}>
           <ChipInput
             name="tags"
@@ -69,8 +90,8 @@ const Form = ({ currentId, setCurrentId }) => {
             label="Tags"
             fullWidth
             value={postData.tags}
-            onAdd={(chip) => handleAddChip(chip)}
-            onDelete={(chip) => handleDeleteChip(chip)}
+            onAdd={(chip) => handleAddChipTag(chip)}
+            onDelete={(chip) => handleDeleteChipTag(chip)}
           />
         </div>
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>

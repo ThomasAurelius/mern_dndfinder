@@ -82,6 +82,15 @@ const Post = ({ post, setCurrentId }) => {
         <CardContent>
           <Typography className={classes.message} variant="body2" color="textSecondary" component="p">{post?.message?.split(' ').splice(0, 20).join(' ')}...</Typography>
         </CardContent>
+        <CardContent className={classes.spotsCard}>
+          <Typography className={classes.spots} variant="body2" color="textSecondary" component="p">Spots open: &nbsp;{post?.spotsOpen}</Typography>
+        </CardContent>
+        <div className={classes.details}>
+          <Typography variant="body2" color="textSecondary" component="h2">{post?.daysAvailable?.map((day) => `#${day} `)}</Typography>
+        </div>
+        <CardContent className={classes.cityCard}>
+          <Typography className={classes.city} variant="body2" color="textSecondary" component="p">{post?.city}</Typography>
+        </CardContent>
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
         </div>

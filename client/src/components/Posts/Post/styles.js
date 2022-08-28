@@ -59,5 +59,15 @@ export default makeStyles({
   },
   message: {
     fontSize: "1.25rem"
-  }
+  },
+  city: {
+    fontSize: "1.25rem",
+    padding: "0"
+  },
+  cityCard: {
+    paddingBlock: "0",
+  },
+  spotsCard: {
+    paddingBlock: "0",
+  },
 });
