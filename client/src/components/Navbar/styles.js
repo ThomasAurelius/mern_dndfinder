@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 
+
 export default makeStyles((theme) => ({
   appBar: {
     borderRadius: 15,
@@ -66,4 +67,15 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
     padding: '0',
   },
+  searchButton: {
+    paddingInline: "15px",
+    cursor: "pointer",
+    marginInline: "5px",
+  },
+  search: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",  
+
+  }
 }));

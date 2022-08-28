@@ -13,7 +13,7 @@ import useStyles from './styles';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-const Home = () => {
+const Home = ({ showForm}) => {
   const classes = useStyles();
   const query = useQuery();
   const page = query.get('page') || 1;
@@ -25,6 +25,9 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [tags, setTags] = useState([]);
   const history = useHistory();
+
+
+console.log( showForm)
 
   const searchPost = () => {
     if (search.trim() || tags) {
@@ -48,11 +51,11 @@ const Home = () => {
   return (
     <Grow in>
       <Container maxWidth="xl">
-        <Grid container justifyContent="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
-          <Grid item xs={12} sm={6} md={9}>
-            <Posts setCurrentId={setCurrentId} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container justifyContent="center" alignItems="stretch" spacing={3} className={classes.gridContainer}>
+          
+         
+          <Grid  item xs={12} sm={6} md={3} style={{ display: !showForm ? 'block' : 'none'}}>
+           
             <AppBar className={classes.appBarSearch} position="static" color="inherit">
               <TextField onKeyDown={handleKeyPress} name="search" variant="outlined" label="Search Memories" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
               <ChipInput
@@ -65,14 +68,27 @@ const Home = () => {
               />
               <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
             </AppBar>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {(!searchQuery && !tags.length) && (
-              <Paper className={classes.pagination} elevation={6}>
-                <Pagination page={page} />
-              </Paper>
-            )}
+            
+
+            
+              
+                <Form currentId={currentId} setCurrentId={setCurrentId} />
+            
+           
+              
           </Grid>
+           
+          <Grid item style={{}} xs={12} sm={6} md={9}>
+            <Posts setCurrentId={setCurrentId} />
+          </Grid>
+          
         </Grid>
+          {(!searchQuery && !tags.length) && (
+                <Paper className={classes.pagination} elevation={6}>
+                  <Pagination page={page} />
+                </Paper>
+              )}
+            
       </Container>
     </Grow>
   );

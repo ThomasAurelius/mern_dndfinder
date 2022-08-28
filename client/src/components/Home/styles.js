@@ -17,4 +17,11 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
     },
   },
+  hideForm: {
+    display: 'none',
+  },
+ bigGrid: {
+    justifyContent: 'center',
+  }
+  
 }));
