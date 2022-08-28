@@ -40,9 +40,13 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     margin: '20px',
+    
   },
   title: {
     padding: '0 16px',
+    marginTop: "-40px",
+    fontWeight: "bold",
+    color: "white",
   },
   cardActions: {
     padding: '0 16px 8px 16px',
@@ -53,4 +57,7 @@ export default makeStyles({
     display: 'block',
     textAlign: 'initial',
   },
+  message: {
+    fontSize: "1.25rem"
+  }
 });
