@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 
-app.options('*', cors())
+
 
 const corsOptions ={
     origin:'http://mern-dndfinder.vercel.app', 
@@ -21,6 +21,23 @@ app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
+app.options('*', cors())
+
+app.get(("/api"), (req, res) => {
+    res.send("Hello to DnD Finder API")
+    });
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", function (_, res) {
+    res.sendFile(path.join(_dirname, "./client/build/index.html"),
+    function (err) {
+        if (err) {
+            res.status(500).send(err)
+        }
+      }
+    );
+});
 
 
 app.use(function(req, res, next) {
@@ -32,8 +49,8 @@ app.use(function(req, res, next) {
 
 
 
-app.use("/posts", postRoutes);
-app.use("/user", userRouter);
+app.use("/api/posts", postRoutes);
+app.use("/api/user", userRouter);
 
 const PORT = process.env.PORT|| 5000;
 
