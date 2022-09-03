@@ -9,11 +9,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-//const cors = require('cors');
+const cors = require('cors');
 
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
-//app.use(cors());
+app.options('*', cors());
 
 const corsOptions ={
     origin:'mern-dndfinder.vercel.app', 
