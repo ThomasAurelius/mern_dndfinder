@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path'
 
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
@@ -23,38 +24,24 @@ app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.options('*', cors())
 
-app.get(("/api"), (req, res) => {
-    res.send("Hello to DnD Finder API")
-    });
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-
-app.get("*", function (_, res) {
-    res.sendFile(path.join(_dirname, "./client/build/index.html"),
-    function (err) {
-        if (err) {
-            res.status(500).send(err)
-        }
-      }
-    );
-});
 
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT, SIGNIN, SIGNUP, DELETE, PATCH, UPDATE, FETCH_ALL");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Accept, Authorization");
   next();
 });
 
 
 
-app.use("/api/posts", postRoutes);
-app.use("/api/user", userRouter);
+app.use("/posts", postRoutes);
+app.use("/user", userRouter);
 
-const PORT = process.env.PORT|| 5000;
+const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
 
