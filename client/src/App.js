@@ -15,7 +15,7 @@ const App = () => {
  
 console.log(showForm)
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <Container maxWidth="xl">
         <Navbar showForm={showForm} setShowForm={setShowForm} />
         <Switch>
