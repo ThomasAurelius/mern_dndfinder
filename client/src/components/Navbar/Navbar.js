@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 
 import memoriesLogo from '../images/memories-Logo.png';
-import memoriesText from '../images/memories-Text.png';
+
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
-import { BsSearch } from 'react-icons/bs';
+
 import { IoCreateOutline } from 'react-icons/io5';
 
 const Navbar = ({ showForm, setShowForm}) => {
