@@ -13,7 +13,7 @@ const app = express();
 app.options('*', cors())
 
 const corsOptions ={
-    origin:'mern-dndfinder.vercel.app', 
+    origin:'localhost:3000', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
