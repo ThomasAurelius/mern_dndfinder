@@ -13,7 +13,7 @@ const cors = require('cors');
 
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
-app.options('*', cors());
+
 
 const corsOptions ={
     origin:'mern-dndfinder.vercel.app', 
