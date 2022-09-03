@@ -13,7 +13,7 @@ const app = express();
 app.options('*', cors())
 
 const corsOptions ={
-    origin:'localhost:3000', 
+    origin:'http://mern-dndfinder.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -37,7 +37,7 @@ app.use("/user", userRouter);
 
 const PORT = process.env.PORT|| 5000;
 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
 
