@@ -29,11 +29,12 @@ export const getPostsBySearch = async (req, res) => {
         const message = new RegExp(searchQuery, "i");
         const city = new RegExp(searchQuery, "i");
         const daysAvailable = new RegExp(searchQuery, "i");
+        const tags = new RegExp(searchQuery, "i");
         const zipCode = new RegExp(searchQuery, "i");
         
 
 
-        const posts = await PostMessage.find({ $or: [ { title }, { message }, { city }, { daysAvailable }, { tags: { $in: tags.split(',') } } ]});
+        const posts = await PostMessage.find({ $or: [ { title }, { message }, { city }, { daysAvailable }, { tags }  ]});
 
         res.json({ data: posts });
     } catch (error) {    
