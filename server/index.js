@@ -32,8 +32,8 @@ app.use(function(req, res, next) {
 
 
 
-app.use("/posts", postRoutes);
-app.use("/user", userRouter);
+app.use("/api/posts", postRoutes);
+app.use("/api/user", userRouter);
 
 const PORT = process.env.PORT|| 5000;
 
