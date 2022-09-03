@@ -32,6 +32,8 @@ app.use(function(req, res, next) {
 
 
 
+app.use("/posts", postRoutes);
+app.use("/user", userRouter);
 
 const PORT = process.env.PORT|| 5000;
 
@@ -41,5 +43,3 @@ mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnified
 
 // mongoose.set('useFindAndModify', false);
 
-app.use("/posts", postRoutes);
-app.use("/user", userRouter);
