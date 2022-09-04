@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import ChipInput from 'material-ui-chip-input';
+
 
 import { getPostsBySearch } from '../../actions/posts';
 import Posts from '../Posts/Posts';
@@ -44,9 +44,7 @@ console.log( showForm)
     }
   };
 
-  const handleAddChip = (tag) => setTags([...tags, tag]);
-
-  const handleDeleteChip = (chipToDelete) => setTags(tags.filter((tag) => tag !== chipToDelete));
+ 
 
   return (
     <Grow in>
@@ -59,9 +57,7 @@ console.log( showForm)
             <AppBar className={classes.appBarSearch} position="static" color="inherit">
               <TextField onKeyDown={handleKeyPress} name="search" variant="outlined" label="Search Games" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
 
-              {/* Remove once refactor of search path is done. Keeping just in case there is an issue later on.
-               <ChipInput style={{ margin: '10px 0' }} value={tags} onAdd={handleAddChip} onDelete={handleDeleteChip} label="Search Tags" variant="outlined" /> 
-              */}
+             
              
               <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
             </AppBar>

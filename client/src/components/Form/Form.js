@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
-import ChipInput from 'material-ui-chip-input';
+
 
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
@@ -72,28 +72,11 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField name="city" variant="outlined" label="City" fullWidth value={postData.city} onChange={(e) => setPostData({ ...postData, city: e.target.value })} />
         <TextField name="message" variant="outlined" label="Message" fullWidth multiline minRows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
         <TextField name="spotsOpen" variant="outlined" label="Spots open" fullWidth value={postData?.spotsOpen} onChange={(e) => setPostData({ ...postData, spotsOpen: e.target.value })} />
-        <div style={{ padding: '5px 0', width: '94%' }}>
-          <ChipInput
-            name="days"
-            variant="outlined"
-            label="Days Available"
-            fullWidth
-            value={postData.daysAvailable}
-            onAdd={(chip) => handleAddChipDays(chip)}
-            onDelete={(chip) => handleDeleteChipDays(chip)}
-          />
-        </div>
-        <div style={{ padding: '5px 0', width: '94%' }}>
-          <ChipInput
-            name="tags"
-            variant="outlined"
-            label="Tags"
-            fullWidth
-            value={postData.tags}
-            onAdd={(chip) => handleAddChipTag(chip)}
-            onDelete={(chip) => handleDeleteChipTag(chip)}
-          />
-        </div>
+        <TextField name="daysAvailable" variant="outlined" label="Days Available" fullWidth value={postData?.daysAvailable} onChange={(e) => setPostData({ ...postData, daysAvailable: e.target.value })} />
+        <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData?.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
+       
+        
+        
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
