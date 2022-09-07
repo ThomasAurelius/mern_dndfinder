@@ -4,6 +4,9 @@ import useStyles from './styles';
 
 
 const Profile = () => {
+
+  const classes = useStyles();
+
   return (
     <>
       <Paper elevation={3}>
