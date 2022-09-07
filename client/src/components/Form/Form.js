@@ -24,7 +24,7 @@ const Form = ({ currentId, setCurrentId }) => {
   useEffect(() => {
     if (!post?.title) clear();
     if (post) setPostData(post);
-  }, [post]);
+  }, [post]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,21 +48,7 @@ const Form = ({ currentId, setCurrentId }) => {
     );
   }
 
-  const handleAddChipTag = (tag) => {
-    setPostData({ ...postData, tags: [...postData.tags, tag] });
-  };
-
-  const handleDeleteChipTag = (chipToDelete) => {
-    setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
-  };
-
-    const handleAddChipDays = (day) => {
-    setPostData({ ...postData, daysAvailable: [...postData.daysAvailable, day] });
-  };
-
-  const handleDeleteChipDays = (chipToDelete) => {
-    setPostData({ ...postData, daysAvailable: postData.daysAvailable.filter((day) => day !== chipToDelete) });
-  };
+  
 
   return (
     <Paper className={classes.paper} elevation={6}>

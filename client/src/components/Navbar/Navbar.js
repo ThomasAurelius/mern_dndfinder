@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, TextField, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
@@ -38,7 +38,7 @@ const Navbar = ({ showForm, setShowForm}) => {
     }
 
     setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
+  }, [location]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   const toggleForm = () => {    

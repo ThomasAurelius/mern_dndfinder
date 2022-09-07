@@ -13,8 +13,8 @@ const app = express();
 
 
 const corsOptions ={
-    origin:'https://shimmering-gnome-6c82a9.netlify.app', 
-  
+    //origin:'https://shimmering-gnome-6c82a9.netlify.app', 
+    origin:'http://localhost:3000',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
