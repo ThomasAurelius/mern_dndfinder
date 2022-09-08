@@ -1,88 +1,74 @@
-# GameMatch - Tabletop game matchmaking
+## ![Logo](./client/public/ta_favicon.png) Game Match
 
-# IN DEVELOPMENT
+**Game Match** A tabletop gaming matchmaker.
 
-https://shimmering-gnome-6c82a9.netlify.app/
+Filling the gap between needing another player and finding one. Users can post a game they want to play and other users can respond to that post. Users can also search for games in their area and interest.
 
-## Table of contents
+**Check it out here:** [https://shimmering-gnome-6c82a9.netlify.app/](https://shimmering-gnome-6c82a9.netlify.app/posts)
 
--  [Overview](#overview)
-   -  [The challenge](#the-challenge)
-   -  [Screenshot](#screenshot)
-   -  [Links](#links)
--  [My process](#my-process)
-   -  [Built with](#built-with)
-   -  [What I learned](#what-i-learned)
-   -  [Continued development](#continued-development)
-   -  [Useful resources](#useful-resources)
--  [Author](#author)
--  [Acknowledgments](#acknowledgments)
+[![Screenshot of TITLE](./gmss1.png)](https://shimmering-gnome-6c82a9.netlify.app/)
 
-## Overview
+---
 
-### The challenge
+## How It's Made
 
-Users should be able to:
+**Tech used:** React, React-Icons, Material-UI, Express, NodeJS, MongoDB, JSX, HTML, CSS, JavaScript
 
--  Register and login
--  Create a new post
--  View all posts
--  View a single post
--  Edit their own post
--  Delete their own post
--  Search for posts by title, message, tags, or location
--  Filter posts by location
--  Like a post
--  Comment on a post
--  View all comments on a post
+This project was made using React, React-Icons, Material-UI, Express, NodeJS, MongoDB, JSX, HTML, CSS, JavaScript. The frontend was made using React and Material-UI. The backend was made using Express and NodeJS. The database was made using MongoDB.
 
-### Screenshot
+It was started as a learning exercise, but I have plans to continue working on it. I would like to add a profile page for users to edit their information and add friends, and send messages.
 
-![] - TBD
-![] - TBD
+### Features and Functionality
 
-### Links
+| _Feature_       | _Description_                                    |
+| --------------- | ------------------------------------------------ |
+| **Register**    | Users can Register a new account                 |
+| **Login**       | Users can login using their credentials          |
+| **Add Post**    | Logged in users can create a post                |
+| **Edit Post**   | Logged in users can edit their own posts         |
+| **Delete Post** | Logged in users can Delete their own posts       |
+| **Update Post** | Logged in users can Update their own posts       |
+| **Like Post**   | Posts can be liked by users, once per user       |
+| **Search Post** | Posts are fully searchable using the search bar. |
 
--  Solution URL: [https://github.com/ThomasAurelius/mern_dndfinder](https://github.com/ThomasAurelius/mern_dndfinder)
--  Live Site URL: [https://shimmering-gnome-6c82a9.netlify.app/](https://shimmering-gnome-6c82a9.netlify.app/)
--  Backend Live URL: [https://itchy-jeans-bat.cyclic.app](https://itchy-jeans-bat.cyclic.app)
+---
 
-## My process
+## Optimizations
 
-### Built with
+There is a routing bug where it won't let you signin, it keeps showing the posts. I'm working on fixing that.
 
--  Semantic HTML5 markup
--  CSS custom properties
--  Flexbox
--  CSS Grid
--  Mobile-first workflow
--  [React](https://reactjs.org/) - JS library
--  [React Router](https://reactrouter.com/) - For routing
--  [React Icons](https://react-icons.github.io/react-icons/) - For icons
--  [Material UI](https://material-ui.com/) - For styling
--  [express](https://expressjs.com/) - Node.js web framework
--  [mongoose](https://mongoosejs.com/) - For MongoDB models
--  [bcrypt](https://www.npmjs.com/package/bcrypt) - For password hashing
--  [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - For authentication
--  [dotenv](https://www.npmjs.com/package/dotenv) - For environment variables
--  [nodemon](https://www.npmjs.com/package/nodemon) - For development
--  [cors](https://www.npmjs.com/package/cors) - For cross-origin resource sharing
--  [MongoDB](https://www.mongodb.com/) - For database
--  Node.js - For server
+I'm working on adding profile screens where users can set more information about themselves, add friends, and send messages.
 
-### Continued development
+Long term goal is adding a map view to show where users are located.
 
-Working on a profile page for users to edit their information and add friends, and send messages.
+Google Authentication coming soon.
 
-### Useful resources
+---
 
--Inspired by JavaScript Mastery's [video](https://www.youtube.com/watch?v=ngc9gnGgUdA&t=1s) on how to build a MERN stack app.
+## Lessons Learned:
 
-## Author
+I learned more about how to structure the back end for a full stack application. I learned how to use MongoDB and Mongoose to create a database. I learned how to use React Router to create a multi-page application. I learned how to use Material-UI to style the application.
 
--  Website - [thomasgooch.dev](https://www.thomasgooch.dev)
--  Twitter - [@thomasaurelius4](https://www.twitter.com/thomasaurelius4)
+I also learned how to structure the front end to communicate with the back end, especially for searching posts. I learned how to use React Hooks to manage state. I learned how to use React Icons to add icons to the application.
 
-## Acknowledgments
+---
 
--  [JavaScript Mastery](https://www.youtube.com/channel/UCmXmlB4-HJytD7wek0Uo97A) for the tutorial on how to build a MERN stack app.
+## Copyright
+
+All code in this project is ©Thomas Gooch. All rights reserved.
+
+Feel free to examine the code for educational purposes, but please note that no license is granted for use or modification of any part of this project.
+
+---
+
+## Other Projects:
+
+Take a look at these other awesome projects from my portfolio:
+
+#
+
+**TITLE** [https://github.com](https://github.com/)
+
+[![Screenshot of TITLE]()](https://example.com)
+
+#
