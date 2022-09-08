@@ -1,4 +1,4 @@
-## ![Logo](./public/ta_favicon.png) Game Match
+## ![Logo](./client/public/ta_favicon.png) Game Match
 
 **Game Match** A tabletop gaming matchmaker.
 
