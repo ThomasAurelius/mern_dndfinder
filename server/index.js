@@ -13,13 +13,13 @@ const app = express();
 
 
 const corsOptions ={
-    //origin:'https://shimmering-gnome-6c82a9.netlify.app', 
-    origin:'http://localhost:3000',
+    origin:'https://shimmering-gnome-6c82a9.netlify.app', 
+    // origin:'http://localhost:3000',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
-
+app.use(bodyParser.json());
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.options('*', cors())
