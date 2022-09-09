@@ -79,21 +79,26 @@ const Post = ({ post, setCurrentId }) => {
         )}
         
         <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
-        <CardContent>
-          <Typography className={classes.message} variant="body2" color="textSecondary" component="p">{post?.message?.split(' ').splice(0, 20).join(' ')}...</Typography>
+        <CardContent className={classes.cityCard}>
+          <Typography className={classes.city} variant="body2" color="textSecondary" component="p">{post?.city}</Typography>
         </CardContent>
+        
+        
         <CardContent className={classes.spotsCard}>
           <Typography className={classes.spots} variant="body2" color="textSecondary" component="p">Spots open: &nbsp;{post?.spotsOpen}</Typography>
         </CardContent>
         <div className={classes.details}>
-          <Typography variant="body2" color="textSecondary" component="h2">{post?.daysAvailable?.map((day) => `#${day} `)}</Typography>
+          <Typography variant="body2" className={classes.days} color="textSecondary" component="h2">{post?.daysAvailable?.map((day) => `#${day} `)}</Typography>
         </div>
-        <CardContent className={classes.cityCard}>
-          <Typography className={classes.city} variant="body2" color="textSecondary" component="p">{post?.city}</Typography>
+        <CardContent>
+          <Typography className={classes.message} variant="body2" color="textSecondary"  component="p">{post?.message?.split(' ').splice(0, 20).join(' ')}...</Typography>
         </CardContent>
+        
+          {/*
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
         </div>
+          */}
       </ButtonBase>
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" disabled={!user?.result} onClick={handleLike}>

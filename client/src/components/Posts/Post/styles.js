@@ -23,14 +23,14 @@ export default makeStyles({
   },
   overlay: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
+    top: '15px',
+    left: '15px',
     color: 'white',
   },
   overlay2: {
     position: 'absolute',
-    top: '20px',
-    right: '20px',
+    top: '15px',
+    right: '15px',
     color: 'white',
   },
   grid: {
@@ -39,12 +39,15 @@ export default makeStyles({
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px',
-    
+    margin: '15px',
+    marginTop: '05px',
+  },
+  days :{
+    color: 'white',
   },
   title: {
     padding: '0 16px',
-    marginTop: "-40px",
+    marginTop: "-80px",
     fontWeight: "bold",
     color: "white",
   },
@@ -58,16 +61,28 @@ export default makeStyles({
     textAlign: 'initial',
   },
   message: {
-    fontSize: "1.25rem"
+    fontSize: "1rem"
   },
   city: {
-    fontSize: "1.25rem",
-    padding: "0"
+    fontSize: "1.rem",
+    padding: "0",    
+    color: "white",
   },
   cityCard: {
     paddingBlock: "0",
+    marginTop: "-5px",
   },
   spotsCard: {
     paddingBlock: "0",
+    marginTop: "-10px",
+    
   },
+  spots: {
+    fontSize: "1.rem",
+    padding: "0",
+    color: "white",
+    marginTop: "-22px",
+    marginLeft: "140px",
+  },
+  
 });
