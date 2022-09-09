@@ -8,9 +8,12 @@ import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import CreatorOrTag from './components/CreatorOrTag/CreatorOrTag';
 import Profile from './components/Profile/Profile';
+import { useSelector } from 'react-redux';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
+
+  const newUser = useSelector((state) => state.user);
   
   const [showForm, setShowForm] = useState(false);
  

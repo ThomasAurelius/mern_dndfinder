@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
-
+import { addUser } from '../../features/userSlice';
 
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
@@ -14,6 +14,8 @@ const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
+
+  const newUser = useSelector((state) => state.user);
   const history = useHistory();
 
   const clear = () => {
