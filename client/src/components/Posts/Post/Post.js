@@ -60,8 +60,10 @@ const Post = ({ post, setCurrentId }) => {
       >
         <CardMedia className={classes.media} image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={post.title} />
         <div className={classes.overlay}>
-          <Typography variant="h6">{post.name}</Typography>
-          <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+           <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
+          <CardContent className={classes.cityCard}>
+            <Typography className={classes.city} variant="body2" color="textSecondary" component="p">{post?.city}</Typography>
+          </CardContent>
         </div>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?.type === 'admin') && (
         <div className={classes.overlay2} name="edit">
@@ -77,20 +79,15 @@ const Post = ({ post, setCurrentId }) => {
           </Button>
         </div>
         )}
-        
-        <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
-        <CardContent className={classes.cityCard}>
-          <Typography className={classes.city} variant="body2" color="textSecondary" component="p">{post?.city}</Typography>
-        </CardContent>
-        
-        
-        <CardContent className={classes.spotsCard}>
-          <Typography className={classes.spots} variant="body2" color="textSecondary" component="p">Spots open: &nbsp;{post?.spotsOpen}</Typography>
-        </CardContent>
+        <Typography variant="h6" className={classes.name}>{post.name}</Typography>
+          <Typography className={classes.time} variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         <div className={classes.details}>
           <Typography variant="body2" className={classes.days} color="textSecondary" component="h2">{post?.daysAvailable?.map((day) => `#${day} `)}</Typography>
         </div>
-        <CardContent>
+        <CardContent className={classes.spotsCard}>
+          <Typography className={classes.spots} variant="body2" color="textSecondary" component="p">Spots open: &nbsp;{post?.spotsOpen}</Typography>
+        </CardContent>
+        <CardContent className={classes.messageCard}>
           <Typography className={classes.message} variant="body2" color="textSecondary"  component="p">{post?.message?.split(' ').splice(0, 20).join(' ')}...</Typography>
         </CardContent>
         

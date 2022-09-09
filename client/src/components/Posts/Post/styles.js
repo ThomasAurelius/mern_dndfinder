@@ -24,7 +24,7 @@ export default makeStyles({
   overlay: {
     position: 'absolute',
     top: '15px',
-    left: '15px',
+    left: '5px',
     color: 'white',
   },
   overlay2: {
@@ -33,21 +33,21 @@ export default makeStyles({
     right: '15px',
     color: 'white',
   },
+ 
   grid: {
     display: 'flex',
   },
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '15px',
-    marginTop: '05px',
+    marginTop: '5px',
+    paddingLeft: '20px',
   },
   days :{
     color: 'white',
   },
   title: {
     padding: '0 16px',
-    marginTop: "-80px",
     fontWeight: "bold",
     color: "white",
   },
@@ -61,28 +61,46 @@ export default makeStyles({
     textAlign: 'initial',
   },
   message: {
-    fontSize: "1rem"
+    fontSize: "1rem",
+    padding: "0",
+  },
+  messageCard: {
+    paddingBlock: "0.25rem",
+    
   },
   city: {
-    fontSize: "1.rem",
+    fontSize: "1.1rem",
     padding: "0",    
     color: "white",
   },
   cityCard: {
     paddingBlock: "0",
-    marginTop: "-5px",
+    marginTop: '-10px'
+    
   },
   spotsCard: {
-    paddingBlock: "0",
-    marginTop: "-10px",
+    paddingBlock: ".25rem",
+    marginTop: ".5rem"
+   
     
   },
   spots: {
-    fontSize: "1.rem",
+    fontSize: "1.1rem",
+    padding: "0",
+    
+  },
+  name: {
+    fontSize: "1.1rem",
     padding: "0",
     color: "white",
-    marginTop: "-22px",
-    marginLeft: "140px",
+    marginTop: '-80px',
+    marginLeft: '20px',
+  },
+  time: {
+    fontSize: "1rem",
+    padding: "0",
+    color: "white",
+    marginLeft: '20px',
   },
   
 });
