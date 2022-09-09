@@ -23,4 +23,4 @@ export const signup = (formData, router) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
-};
+}; 
