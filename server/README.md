@@ -1,4 +1,4 @@
-## ![Logo](./client/public/ta_favicon.png) Game Match
+## ![Logo](../client/public/ta_favicon.png) Game Match
 
 **Game Match** A tabletop gaming matchmaker.
 
@@ -6,7 +6,7 @@ Filling the gap between needing another player and finding one. Users can post a
 
 **Check it out here:** [https://shimmering-gnome-6c82a9.netlify.app/](https://shimmering-gnome-6c82a9.netlify.app/posts)
 
-[![Screenshot of TITLE](./gmss1.png)](https://shimmering-gnome-6c82a9.netlify.app/)
+[![Screenshot of TITLE](../gmss1.png)](https://shimmering-gnome-6c82a9.netlify.app/)
 
 ---
 
