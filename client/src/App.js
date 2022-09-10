@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
+  
 
   const newUser = useSelector((state) => state.user);
   

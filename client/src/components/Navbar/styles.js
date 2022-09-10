@@ -45,7 +45,7 @@ export default makeStyles((theme) => ({
     },
   },
   logout: {
-    marginLeft: '20px',
+    width: "100%",
   },
   userName: {
     display: 'flex',
@@ -77,5 +77,27 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",  
 
-  }
+  },
+  headerMenuParent: {
+    position: "relative",
+  },
+  headerMenu: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: "100%",
+    right: "-30px",
+    background: "white",
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    padding: "10px",
+    zIndex: "1",
+  },
+  profileButton: {
+    marginInline: "auto",
+    width: "100%",
+
+  },
 }));

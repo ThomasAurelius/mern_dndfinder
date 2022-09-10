@@ -14,11 +14,14 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 const Home = ({ showForm}) => {
+   
   const classes = useStyles();
   const query = useQuery();
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -27,7 +30,7 @@ const Home = ({ showForm}) => {
   const history = useHistory();
 
 
-console.log( showForm)
+
 
   const searchPost = () => {
     if (search.trim() || tags) {
@@ -65,14 +68,14 @@ console.log( showForm)
 
             
               
-                <Form currentId={currentId} setCurrentId={setCurrentId} />
+                <Form currentId={currentId} setCurrentId={setCurrentId} handleOpen={handleOpen} handleClose={handleClose} open={open} setOpen={setOpen} />
             
            
               
           </Grid>
            
           <Grid item style={{}} xs={12} sm={6} md={9}>
-            <Posts setCurrentId={setCurrentId} />
+            <Posts setCurrentId={setCurrentId} handleOpen={handleOpen} handleClose={handleClose} open={open} setOpen={setOpen} />
           </Grid>
           
         </Grid>
