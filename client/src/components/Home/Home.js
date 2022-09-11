@@ -13,15 +13,15 @@ import useStyles from './styles';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-const Home = ({ showForm}) => {
+
+
+const Home = ({ showForm, open, setOpen, handleOpen, handleClose}) => {
    
   const classes = useStyles();
   const query = useQuery();
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -59,19 +59,12 @@ const Home = ({ showForm}) => {
            
             <AppBar className={classes.appBarSearch} position="static" color="inherit">
               <TextField onKeyDown={handleKeyPress} name="search" variant="outlined" label="Search Games" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
-
-             
-             
               <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
             </AppBar>
             
 
-            
-              
                 <Form currentId={currentId} setCurrentId={setCurrentId} handleOpen={handleOpen} handleClose={handleClose} open={open} setOpen={setOpen} />
             
-           
-              
           </Grid>
            
           <Grid item style={{}} xs={12} sm={6} md={9}>

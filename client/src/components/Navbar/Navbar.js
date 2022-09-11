@@ -13,7 +13,7 @@ import { IoCreateOutline } from 'react-icons/io5';
 
 import Form from '../Form/Form';
 
-const Navbar = ({ showForm, setShowForm}) => {
+const Navbar = ({ showForm, setShowForm, handleOpen, setOpen}) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [showMenu, setShowMenu] = useState(false);
 
@@ -74,8 +74,14 @@ const Navbar = ({ showForm, setShowForm}) => {
                 {showMenu === true ?
                 <div className={classes.headerMenu}>
                   <Button onClick={toggleForm} className={classes.createButton} variant="contained" color="primary" size="medium" startIcon={<IoCreateOutline />}>Options</Button>
-                  
-                  <Button variant="contained" className={classes.profileButton}>Profile</Button>
+                  <Button variant="contained" onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpen()
+                    setOpen(true)
+                  }}>Create Post (NOT WORKING)</Button>
+                  <Button variant="contained" className={classes.profileButton}>
+                  <Link to='/profile'>Profile</Link>
+                  </Button>
                   <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                   
                 </div>

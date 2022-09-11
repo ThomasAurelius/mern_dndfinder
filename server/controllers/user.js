@@ -46,3 +46,17 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+
+export const updateGames = async (req, res) => {
+    const { id } = req.params;
+    const { games } = req.body;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedGames = { games, _id: id };
+
+    await User.findByIdAndUpdate(id, updatedGames, { new: true });
+
+    res.json(updatedGames);
+}

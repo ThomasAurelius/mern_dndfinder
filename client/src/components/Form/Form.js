@@ -41,6 +41,8 @@ const Form = ({ currentId, setCurrentId, open, setOpen, handleClose, handleOpen 
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
       clear();
     }
+    handleClose()
+    
   };
 
   if (!user?.result?.name) {
