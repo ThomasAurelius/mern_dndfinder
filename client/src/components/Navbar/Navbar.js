@@ -53,6 +53,10 @@ const Navbar = ({ showForm, setShowForm, handleOpen, setOpen}) => {
   const toggleMenu = () => {
     setShowMenu(prevShowMenu => prevShowMenu = !showMenu);
   }
+
+  const linkToProfile = () => {
+    history.push(`/profile/${user?.result?._id}`);
+  }
   
 
   return (
@@ -79,8 +83,8 @@ const Navbar = ({ showForm, setShowForm, handleOpen, setOpen}) => {
                     handleOpen()
                     setOpen(true)
                   }}>Create Post (NOT WORKING)</Button>
-                  <Button variant="contained" className={classes.profileButton}>
-                  <Link to='/profile'>Profile</Link>
+                  <Button variant="contained" className={classes.profileButton} onClick={linkToProfile} >
+                  Profile
                   </Button>
                   <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                   

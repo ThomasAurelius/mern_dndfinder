@@ -1,12 +1,17 @@
 import React from 'react'
 import { Button, Modal, TextField, Paper, Typography } from '@material-ui/core'
 import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { updateGames } from '../../../actions/user';
 
 function EditGameModal() {
 
    const user = JSON.parse(localStorage.getItem('profile'));
-
-      const [openEditGames, setOpenEditGames] = React.useState(false);
+   const dispatch = useDispatch();
+   const [userData, setUserData] = React.useState(user.result);
+   const [openEditGames, setOpenEditGames] = React.useState(false);
+   const [games, setGames] = React.useState(user?.result.games);
+   const handleChangeGames = (e) => setGames(e.target.value);
   const handleOpenEditGames = () => setOpenEditGames(true);
   const handleCloseEditGames = () => setOpenEditGames(false);
 
@@ -14,12 +19,10 @@ function EditGameModal() {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      console.log('submit')
+       dispatch(updateGames({ ...userData, user: user?.result?.games }));
    }
 
-   const setUserData = () => {
-      console.log('setUserData')
-   }
+   
 
   return (
     <>
@@ -32,7 +35,7 @@ function EditGameModal() {
             <form className={classes.form} onSubmit={handleSubmit}>
                <Typography component="h3" variant="h3">Edit Games</Typography>
                <Typography component="p" >Use a comma, to separate games</Typography>
-               <TextField name="games" variant="outlined" label="Games" fullWidth value={user.result.games} onChange={(e) => setUserData({ ...user, games: e.target.value })} />
+               <TextField name="games" id='games'  variant="outlined" label="Games" fullWidth value={games} onChange={handleChangeGames} />
                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={handleCloseEditGames} fullWidth>Clear</Button>
             </form>
