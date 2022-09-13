@@ -8,7 +8,7 @@ import { addUser } from '../../features/userSlice';
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
-const Form = ({ currentId, setCurrentId, open, setOpen, handleClose, handleOpen }) => {
+const Form = ({ currentId, setCurrentId, open, setOpen,  handleOpen }) => {
   const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '', city: '', daysAvailable: [], spotsOpen: '' });
   const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
@@ -17,6 +17,10 @@ const Form = ({ currentId, setCurrentId, open, setOpen, handleClose, handleOpen 
 
   const newUser = useSelector((state) => state.user);
   const history = useHistory();
+  const handleClose = () => {
+    setOpen(false);
+    history.push('/');
+  }
 
 
 
