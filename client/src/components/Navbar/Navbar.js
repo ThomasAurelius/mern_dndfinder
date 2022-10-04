@@ -11,8 +11,11 @@ import useStyles from './styles';
 
 import { IoCreateOutline } from 'react-icons/io5';
 
-const Navbar = ({ showForm, setShowForm}) => {
+import Form from '../Form/Form';
+
+const Navbar = ({ showForm, setShowForm, handleOpen, setOpen}) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [showMenu, setShowMenu] = useState(false);
 
 
   const dispatch = useDispatch();
@@ -28,6 +31,8 @@ const Navbar = ({ showForm, setShowForm}) => {
     setUser(null);
   };
 
+  //I dont think this is working as intended.
+  //When its been over an hour, instead of logging out, it just refreshes /posts.
   useEffect(() => {
     const token = user?.token;
 
@@ -45,6 +50,13 @@ const Navbar = ({ showForm, setShowForm}) => {
     setShowForm(prevShowForm => prevShowForm = !showForm);
   }
 
+  const toggleMenu = () => {
+    setShowMenu(prevShowMenu => prevShowMenu = !showMenu);
+  }
+
+  const linkToProfile = () => {
+    history.push(`/profile/${user?.result?._id}`);
+  }
   
 
   return (
@@ -61,10 +73,24 @@ const Navbar = ({ showForm, setShowForm}) => {
               <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
               <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
               
-              <Button onClick={toggleForm} className={classes.createButton} variant="contained" color="primary" size="medium" startIcon={<IoCreateOutline />}>Options</Button>
-              
-
-              <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+              <div className={classes.headerMenuParent}>
+                <Button onClick={toggleMenu} className={classes.toggleButton} variant='contained' size="medium">Menu</Button>
+                {showMenu === true ?
+                <div className={classes.headerMenu}>
+                  <Button onClick={toggleForm} className={classes.createButton} variant="contained" color="primary" size="medium" startIcon={<IoCreateOutline />}>Options</Button>
+                  <Button variant="contained" onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpen()
+                    setOpen(true)
+                  }}>Create Post (NOT WORKING)</Button>
+                  <Button variant="contained" className={classes.profileButton} onClick={linkToProfile} >
+                  Profile
+                  </Button>
+                  <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+                  
+                </div>
+                : null}
+              </div>
             </div>
             
           </>

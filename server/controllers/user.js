@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import mongoose from 'mongoose';
 
 import UserModel from "../models/user.js";
 
@@ -46,3 +47,17 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+
+export const updateGames = async (req, res) => {
+    const { id } = req.params;
+    const { user } = req.user;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedGames = { user, _id: id };
+
+    await User.findByIdAndUpdate(id, updatedGames, { new: true });
+
+    res.json(updatedGames);
+}

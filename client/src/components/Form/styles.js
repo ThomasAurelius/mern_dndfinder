@@ -21,4 +21,8 @@ export default makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
   },
+  modal: {
+    width: '80vw',
+    marginInline: 'auto'
+  }
 }));
