@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Typography, Paper, Modal } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
-
+import { addUser } from '../../features/userSlice';
 
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId, setCurrentId, open, setOpen,  handleOpen }) => {
   const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '', city: '', daysAvailable: [], spotsOpen: '' });
   const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
+
+  const newUser = useSelector((state) => state.user);
   const history = useHistory();
+  const handleClose = () => {
+    setOpen(false);
+    history.push('/');
+  }
+
+
+
 
   const clear = () => {
     setCurrentId(0);
@@ -36,6 +45,8 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
       clear();
     }
+    handleClose()
+    
   };
 
   if (!user?.result?.name) {
@@ -51,6 +62,15 @@ const Form = ({ currentId, setCurrentId }) => {
   
 
   return (
+    <>
+    <Button variant="contained" color="primary" onClick={handleOpen}>Create Post</Button>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+      className={classes.modal}
+    >
     <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? `Editing ${post?.title} ` : 'Creating a Post'}</Typography>
@@ -69,6 +89,8 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>
+    </Modal>
+    </>
   );
 };
 

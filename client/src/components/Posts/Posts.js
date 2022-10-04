@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux';
 import Post from './Post/Post';
 import useStyles from './styles';
 
-const Posts = ({ setCurrentId }) => {
+const Posts = ({ setCurrentId, handleOpen, handleClose, open, setOpen }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
+ 
   const classes = useStyles();
+
 
   if (!posts?.length && !isLoading) return 'No posts';
 
@@ -16,7 +18,7 @@ const Posts = ({ setCurrentId }) => {
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts?.map((post) => (
           <Grid key={post._id} item xs={12} sm={12} md={6} lg={4}>
-            <Post post={post} setCurrentId={setCurrentId} />
+            <Post post={post} setCurrentId={setCurrentId} open={open} handleOpen={handleOpen} setOpen={setOpen} />
           </Grid>
         ))}
       </Grid>
